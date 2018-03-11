@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import { colors } from 'styles';
+import { colors, metrics } from 'styles';
 
 const styles = StyleSheet.create({
   container: {
@@ -14,9 +14,17 @@ const styles = StyleSheet.create({
     backgroundColor: colors.transparent,
     justifyContent: 'center',
     alignItems: 'center',
+    borderColor: colors.lightGray,
+    borderRadius: metrics.borderRadius,
+    flexDirection: 'row',
   },
   modalContent: {
     backgroundColor: colors.light,
+    padding: metrics.basePadding,
+    marginRight: metrics.baseMargin * 2,
+    marginLeft: metrics.baseMargin * 2,
+    borderRadius: metrics.baseRadius,
+    flex: 1,
   },
 });
 
