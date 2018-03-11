@@ -3,7 +3,8 @@ import {
   View,
   Modal,
   Text,
-  TouchableHighlight,
+  TouchableOpacity,
+  TextInput,
 } from 'react-native';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 
@@ -15,6 +16,7 @@ export default class App extends Component {
   };
 
   state = {
+    username: '',
     modalVisible: false,
     region: {
       latitude: -27.2177659,
@@ -50,10 +52,25 @@ export default class App extends Component {
         >
           <View style={styles.modalView}>
             <View style={styles.modalContent}>
-              <Text>Modal</Text>
-              <TouchableHighlight onPress={() => this.setState({ modalVisible: false })}>
-                <Text>Cancelar</Text>
-              </TouchableHighlight>
+              <Text style={styles.modalTitle}>Modal</Text>
+              <View>
+                <TextInput
+                  style={styles.input}
+                  autoCapitalize="none"
+                  autoCorrect={false}
+                  placeholder="Usuário no Github"
+                  underlineColorAndroid="transparent"
+                  value={this.state.username}
+                  onChangeText={username => this.setState({ username })}
+                />
+
+                <TouchableOpacity onPress={() => this.setState({ modalVisible: false })}>
+                  <Text>Cancelar</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => this.setState({ modalVisible: false })}>
+                  <Text>Salvar</Text>
+                </TouchableOpacity>
+              </View>
             </View>
           </View>
 

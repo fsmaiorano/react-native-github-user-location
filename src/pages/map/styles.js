@@ -26,6 +26,18 @@ const styles = StyleSheet.create({
     borderRadius: metrics.baseRadius,
     flex: 1,
   },
+  modalTitle: {
+    fontSize: 18,
+    color: colors.gray,
+  },
+  button: {
+  },
+  input: {
+    marginTop: metrics.baseMargin * 2,
+    borderWidth: 1,
+    borderColor: colors.lightGray,
+    borderRadius: metrics.baseRadius,
+  },
 });
 
 export default styles;
