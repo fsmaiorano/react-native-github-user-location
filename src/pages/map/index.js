@@ -2,24 +2,37 @@ import React, { Component } from 'react';
 import {
   View,
   Modal,
+  Text,
+  TouchableHighlight,
 } from 'react-native';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 
 import styles from './styles';
 
 export default class App extends Component {
-
   static navigationOptions = {
     header: null,
   };
 
   state = {
-    modalVisible: true,
+    modalVisible: false,
   }
+
 
   render() {
     return (
       <View style={styles.container}>
+        <MapView
+          onLongPress={() => this.setState({ modalVisible: true })}
+          provider={PROVIDER_GOOGLE}
+          style={styles.map}
+          region={{
+              latitude: -27.2177659,
+              longitude: -49.6451598,
+              latitudeDelta: 0.0042,
+              longitudeDelta: 0.0031,
+            }}
+        />
         <Modal
           animationType="slide"
           transparent={false}
@@ -28,18 +41,10 @@ export default class App extends Component {
             alert('Modal has been closed.');
           }}
         >
-          <MapView
-            onLongPress={() => this.setState({ modalVisible: false })}
-            provider={PROVIDER_GOOGLE}
-            style={styles.map}
-            region={{
-              latitude: -27.2177659,
-              longitude: -49.6451598,
-              latitudeDelta: 0.0042,
-              longitudeDelta: 0.0031,
-            }}
-          />
-
+          <Text>Modal</Text>
+          <TouchableHighlight onPress={() => this.setState({ modalVisible: false })}>
+            <Text>Cancelar</Text>
+          </TouchableHighlight>
         </Modal>
 
       </View>
