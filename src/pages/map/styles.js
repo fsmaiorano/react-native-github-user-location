@@ -26,11 +26,37 @@ const styles = StyleSheet.create({
     borderRadius: metrics.baseRadius,
     flex: 1,
   },
+  containerTitle: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   modalTitle: {
     fontSize: 18,
     color: colors.gray,
   },
+  buttonsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+  },
   button: {
+    flex: 1,
+    height: 42,
+    borderRadius: metrics.baseRadius,
+    marginTop: metrics.baseMargin,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  buttonCancel: {
+    backgroundColor: colors.cancelAction,
+    marginRight: 7.5,
+  },
+  buttonSave: {
+    backgroundColor: colors.confirmAction,
+    marginLeft: 7.5,
+  },
+  buttonText: {
+    fontSize: 14,
   },
   input: {
     marginTop: metrics.baseMargin * 2,
