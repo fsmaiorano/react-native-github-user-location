@@ -66,10 +66,16 @@ export default class App extends Component {
                   onChangeText={username => this.setState({ username })}
                 />
                 <View style={styles.buttonsContainer}>
-                  <TouchableOpacity style={[styles.button, styles.buttonCancel]} onPress={() => this.setState({ modalVisible: false })}>
+                  <TouchableOpacity
+                    style={[styles.button, styles.buttonCancel]}
+                    onPress={() => this.setState({ modalVisible: false })}
+                  >
                     <Text style={styles.buttonText}>Cancelar</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity style={[styles.button, styles.buttonSave]} onPress={() => this.setState({ modalVisible: false })}>
+                  <TouchableOpacity
+                    style={[styles.button, styles.buttonSave]}
+                    onPress={() => this.setState({ modalVisible: false })}
+                  >
                     <Text style={styles.buttonText}>Salvar</Text>
                   </TouchableOpacity>
                 </View>
