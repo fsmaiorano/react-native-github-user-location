@@ -39,17 +39,17 @@ export default class App extends Component {
           style={styles.map}
           region={this.state.region}
         />
-        <Modal
 
+        <Modal
           animationType="slide"
-          transparent={false}
+          transparent
           visible={this.state.modalVisible}
           onRequestClose={() => {
             alert('Modal has been closed.');
           }}
         >
-          <View>
-            <View>
+          <View style={styles.modalView}>
+            <View style={styles.modalContent}>
               <Text>Modal</Text>
               <TouchableHighlight onPress={() => this.setState({ modalVisible: false })}>
                 <Text>Cancelar</Text>
