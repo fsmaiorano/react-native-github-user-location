@@ -3,8 +3,6 @@ export const Types = {
 };
 
 const initialState = {
-  isLoading: false,
-  modalVisible: true,
   region: {
     latitude: -27.2177659,
     longitude: -49.6451598,

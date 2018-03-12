@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   TextInput,
 } from 'react-native';
+import PropTypes from 'prop-types';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -18,10 +19,20 @@ class Map extends Component {
     header: null,
   };
 
+  static propTypes = {
+    map: PropTypes.shape({
+      region: PropTypes.shape({
+        latitude: PropTypes.number,
+        longitude: PropTypes.number,
+        latitudeDelta: PropTypes.number,
+        longitudeDelta: PropTypes.number,
+      }),
+    }).isRequired,
+  }
+
   state = {
     username: '',
     modalVisible: false,
-    region: {},
   }
 
   componentDidMount = () => {
