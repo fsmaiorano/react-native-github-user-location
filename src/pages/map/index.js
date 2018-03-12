@@ -30,6 +30,12 @@ export default class App extends Component {
     this.setState({ region });
   }
 
+  getUser = () => {
+    const { username, region } = this.state;
+    console.tron.log(username);
+    console.tron.log(region);
+  }
+
   render() {
     console.tron.log(this.state.region);
     return (
@@ -74,7 +80,7 @@ export default class App extends Component {
                   </TouchableOpacity>
                   <TouchableOpacity
                     style={[styles.button, styles.buttonSave]}
-                    onPress={() => this.setState({ modalVisible: false })}
+                    onPress={this.getUser}
                   >
                     <Text style={styles.buttonText}>Salvar</Text>
                   </TouchableOpacity>
