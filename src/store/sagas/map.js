@@ -6,7 +6,7 @@ import { Creators as MapActions } from 'store/ducks/map';
 
 export function* getCoordinatesRequest(action) {
   try {
-    console.tron.log(action);
+    console.tron.log('saga', action);
     yield put(MapActions.getInitialCoordinates(action));
 
     // if (favorites.find(favorite => favorite.id === response.data.id)) {

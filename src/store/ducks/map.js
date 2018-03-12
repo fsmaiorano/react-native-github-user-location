@@ -5,13 +5,11 @@ export const Types = {
 const initialState = {
   isLoading: false,
   modalVisible: true,
-  coordinates: {
-    region: {
-      latitude: -27.2177659,
-      longitude: -49.6451598,
-      latitudeDelta: 0.0042,
-      longitudeDelta: 0.0031,
-    },
+  region: {
+    latitude: -27.2177659,
+    longitude: -49.6451598,
+    latitudeDelta: 0.0042,
+    longitudeDelta: 0.0031,
   },
 };
 
@@ -29,10 +27,10 @@ export default function map(state = initialState, action) {
 
 // Actions
 export const Creators = {
-  getInitialCoordinates: coordinates => ({
+  getInitialCoordinates: region => ({
     type: Types.GET_COORDINATES,
     payload: {
-      coordinates,
+      region,
     },
   }),
 };

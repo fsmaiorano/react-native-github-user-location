@@ -7,10 +7,13 @@ import {
   TextInput,
 } from 'react-native';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { Creators as MapActions } from 'store/ducks/map';
 
 import styles from './styles';
 
-export default class App extends Component {
+class Map extends Component {
   static navigationOptions = {
     header: null,
   };
@@ -18,12 +21,12 @@ export default class App extends Component {
   state = {
     username: '',
     modalVisible: false,
-    region: {
-      latitude: -27.2177659,
-      longitude: -49.6451598,
-      latitudeDelta: 0.0042,
-      longitudeDelta: 0.0031,
-    },
+    region: {},
+  }
+
+  componentDidMount = () => {
+    this.setState({ region: this.props.map.region });
+    console.tron.log(this.props);
   }
 
   onRegionChange = (region) => {
@@ -47,7 +50,6 @@ export default class App extends Component {
           style={styles.map}
           region={this.state.region}
         />
-
         <Modal
           animationType="slide"
           transparent
@@ -88,11 +90,16 @@ export default class App extends Component {
               </View>
             </View>
           </View>
-
         </Modal>
-
-
       </View>
     );
   }
 }
+
+const mapStateToProps = state => ({
+  map: state.map,
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators(MapActions, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Map);
