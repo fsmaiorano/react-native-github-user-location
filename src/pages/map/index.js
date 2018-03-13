@@ -46,12 +46,9 @@ class Map extends Component {
     this.setState({ region });
   }
 
-  getUser = () => {
-    const { username, region } = this.state;
-    console.tron.log(username);
-    console.tron.log(region);
-    console.tron.log(this.props);
-    this.props.getGithubUser(username);
+  getUser = async () => {
+    const { username } = this.state;
+    await this.props.getGithubUser(username);
   }
 
   render() {

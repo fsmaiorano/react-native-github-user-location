@@ -23,7 +23,6 @@ export function* getCoordinatesRequest(action) {
 export function* getGithubUserRequest(action) {
   try {
     const response = yield call(api.get, `/users/${action.payload.searchUser}`);
-    console.tron.log(action);
     console.tron.log(response.data);
     yield put(MapActions.getGithubUserSuccess(response.data));
   } catch (err) {
