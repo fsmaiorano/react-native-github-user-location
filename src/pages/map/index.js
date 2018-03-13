@@ -20,6 +20,7 @@ class Map extends Component {
   };
 
   static propTypes = {
+    getGithubUser: PropTypes.func.isRequired,
     map: PropTypes.shape({
       region: PropTypes.shape({
         latitude: PropTypes.number,
