@@ -27,6 +27,8 @@ class Map extends Component {
         latitudeDelta: PropTypes.number,
         longitudeDelta: PropTypes.number,
       }),
+      userSearch: PropTypes.string,
+      user: PropTypes.shape(),
     }).isRequired,
   }
 
