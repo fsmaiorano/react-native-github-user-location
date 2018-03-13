@@ -22,6 +22,12 @@ export default function map(state = initialState, action) {
       };
     case Types.GET_GITHUB_USER:
       return {
+        ...state,
+        searchUser: action.payload.searchUser,
+      };
+    case Types.GET_GITHUB_USER_SUCCESS:
+      return {
+        ...state,
         user: action.payload.user,
       };
     default: return state;

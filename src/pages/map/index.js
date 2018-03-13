@@ -109,7 +109,6 @@ class Map extends Component {
 
 const mapStateToProps = state => ({
   map: state.map,
-  user: state.user,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(MapActions, dispatch);
