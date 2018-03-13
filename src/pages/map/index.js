@@ -37,7 +37,6 @@ class Map extends Component {
 
   componentDidMount = () => {
     this.setState({ region: this.props.map.region });
-    console.tron.log(this.props);
   }
 
   onRegionChange = (region) => {
@@ -48,10 +47,11 @@ class Map extends Component {
     const { username, region } = this.state;
     console.tron.log(username);
     console.tron.log(region);
+    console.tron.log(this.props);
+    this.props.getGithubUser(username);
   }
 
   render() {
-    console.tron.log(this.state.region);
     return (
       <View style={styles.container}>
         <MapView
@@ -109,6 +109,7 @@ class Map extends Component {
 
 const mapStateToProps = state => ({
   map: state.map,
+  user: state.user,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(MapActions, dispatch);
