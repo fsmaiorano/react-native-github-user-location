@@ -20,7 +20,7 @@ class Map extends Component {
   };
 
   static propTypes = {
-    getGithubUser: PropTypes.func.isRequired,
+    getGithubUserRequest: PropTypes.func.isRequired,
     map: PropTypes.shape({
       region: PropTypes.shape({
         latitude: PropTypes.number,
@@ -46,9 +46,10 @@ class Map extends Component {
     this.setState({ region });
   }
 
-  getUser = async () => {
+  getUser = () => {
     const { username } = this.state;
-    await this.props.getGithubUser(username);
+    this.props.getGithubUserRequest(username);
+    let teste = this.props.map;
   }
 
   render() {
