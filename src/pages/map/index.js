@@ -11,6 +11,7 @@ import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Creators as MapActions } from 'store/ducks/map';
+import { Creators as UserActions } from 'store/ducks/user';
 
 import styles from './styles';
 
@@ -49,7 +50,7 @@ class Map extends Component {
   getUser = () => {
     const { username } = this.state;
     this.props.getGithubUserRequest(username);
-    let teste = this.props.map;
+    let teste = this.props.user;
   }
 
   render() {
@@ -110,8 +111,10 @@ class Map extends Component {
 
 const mapStateToProps = state => ({
   map: state.map,
+  user: state.user,
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators(MapActions, dispatch);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(Object.assign({}, MapActions, UserActions), dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Map);

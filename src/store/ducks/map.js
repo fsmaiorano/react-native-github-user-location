@@ -1,8 +1,5 @@
 export const Types = {
   GET_COORDINATES: 'map/GET_COORDINATES',
-  GET_GITHUB_USER: 'map/GET_GITHUB_USER',
-  GET_GITHUB_USER_SUCCESS: 'map/GET_GITHUB_USER_SUCCESS',
-  GET_GITHUB_USER_ERROR: 'map/GET_GITHUB_USER_ERROR',
 };
 
 const initialState = {
@@ -20,16 +17,6 @@ export default function map(state = initialState, action) {
       return {
         ...state,
       };
-    case Types.GET_GITHUB_USER:
-      return {
-        ...state,
-        searchUser: action.payload.searchUser,
-      };
-    case Types.GET_GITHUB_USER_SUCCESS:
-      return {
-        ...state,
-        user: action.payload.user,
-      };
     default: return state;
   }
 }
@@ -43,24 +30,4 @@ export const Creators = {
     },
   }),
 
-  getGithubUserRequest: searchUser => ({
-    type: Types.GET_GITHUB_USER,
-    payload: {
-      searchUser,
-    },
-  }),
-
-  getGithubUserSuccess: user => ({
-    type: Types.GET_GITHUB_USER_SUCCESS,
-    payload: {
-      user,
-    },
-  }),
-
-  getGithubUserError: message => ({
-    type: Types.GET_GITHUB_USER_ERROR,
-    payload: {
-      message,
-    },
-  }),
 };
