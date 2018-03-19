@@ -52,10 +52,6 @@ class Map extends Component {
     this.setState({ region: this.props.map.region });
   }
 
-  onRegionChange = (region) => {
-    this.setState({ region });
-  }
-
   getUser = () => {
     const { username, coordinate } = this.state;
     this.props.getGithubUserRequest(username, coordinate);
@@ -66,6 +62,9 @@ class Map extends Component {
     this.setState({ coordinate, modalVisible: true });
   }
 
+  getInformation = (user) => {
+    console.tron.log(user);
+  }
 
   render() {
     const { users } = this.props.map;
@@ -83,8 +82,11 @@ class Map extends Component {
             coordinate={u.coordinate}
             title={u.login}
             description={u.bio}
+
           >
-            <Image style={styles.marker} source={{ uri: u.avatar_url }} />
+            <TouchableOpacity onPress={() => this.getInformation(u)}>
+              <Image style={styles.marker} source={{ uri: u.avatar_url }} />
+            </TouchableOpacity>
           </MapView.Marker>
         ))}
 

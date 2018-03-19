@@ -66,9 +66,9 @@ const styles = StyleSheet.create({
   },
 
   marker: {
-    width: 40,
-    height: 40,
-    borderRadius: 40 / 2,
+    width: 35,
+    height: 35,
+    borderRadius: 5,
     borderWidth: 3,
     borderColor: colors.white,
     backgroundColor: colors.white,
