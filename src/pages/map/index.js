@@ -5,6 +5,7 @@ import {
   Text,
   TouchableOpacity,
   TextInput,
+  Image,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
@@ -47,21 +48,41 @@ class Map extends Component {
   }
 
   getUser = () => {
-    const { username } = this.state;
-    this.props.getGithubUserRequest(username);
-    let teste = this.props.map;
+    const { username, coordinate } = this.state;
+    this.props.getGithubUserRequest(username, coordinate);
   }
 
+  setCoordinates = (event) => {
+    const { coordinate } = event.nativeEvent;
+
+    this.setState({ coordinate, modalVisible: true });
+
+    // this.props.getGithubUserRequest(username, coordinate);
+  }
+
+
   render() {
+    const { users } = this.props.map;
     return (
       <View style={styles.container}>
         <MapView
-          onLongPress={() => this.setState({ modalVisible: true })}
+          onLongPress={this.setCoordinates}
           provider={PROVIDER_GOOGLE}
-          onRegionChange={this.onRegionChange}
           style={styles.map}
           region={this.state.region}
         />
+        { users && users.map(u => (
+          <MapView.Marker
+            key={u.id}
+            coordinate={u.coordinate}
+            title={u.login}
+            description={u.bio}
+          >
+            <Image style={styles.marker} source={{ uri: u.avatar_url }} />
+          </MapView.Marker>
+        ))}
+
+
         <Modal
           animationType="slide"
           transparent

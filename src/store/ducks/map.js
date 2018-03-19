@@ -1,8 +1,8 @@
 export const Types = {
   GET_COORDINATES: 'map/GET_COORDINATES',
-  GET_GITHUB_USER: 'map/GET_GITHUB_USER',
-  GET_GITHUB_USER_SUCCESS: 'map/GET_GITHUB_USER_SUCCESS',
-  GET_GITHUB_USER_ERROR: 'map/GET_GITHUB_USER_ERROR',
+  GET_GITHUB_USER: 'users/GET_GITHUB_USER',
+  GET_GITHUB_USER_SUCCESS: 'users/GET_GITHUB_USER_SUCCESS',
+  GET_GITHUB_USER_ERROR: 'users/GET_GITHUB_USER_ERROR',
 };
 
 const initialState = {
@@ -12,6 +12,7 @@ const initialState = {
     latitudeDelta: 0.0042,
     longitudeDelta: 0.0031,
   },
+  users: [],
 };
 
 export default function map(state = initialState, action) {
@@ -28,7 +29,7 @@ export default function map(state = initialState, action) {
     case Types.GET_GITHUB_USER_SUCCESS:
       return {
         ...state,
-        user: action.payload.user,
+        users: [...state.users, action.payload.user],
       };
     default: return state;
   }
@@ -43,10 +44,11 @@ export const Creators = {
     },
   }),
 
-  getGithubUserRequest: searchUser => ({
+  getGithubUserRequest: (searchUser, coordinate) => ({
     type: Types.GET_GITHUB_USER,
     payload: {
       searchUser,
+      coordinate,
     },
   }),
 

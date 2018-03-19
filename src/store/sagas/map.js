@@ -4,7 +4,6 @@ import { Creators as MapActions } from 'store/ducks/map';
 
 export function* getCoordinatesRequest(action) {
   try {
-    console.tron.log('saga', action);
     yield put(MapActions.getInitialCoordinates(action));
   } catch (err) {
     console.tron.log('saga err', err);
@@ -16,6 +15,6 @@ export function* getGithubUserRequest(action) {
     const response = yield call(api.get, `/users/${action.payload.searchUser}`);
     yield put(MapActions.getGithubUserSuccess(response.data));
   } catch (err) {
-    console.tron.log('saga err', err);
+    yield put(MapActions.getGithubUserError('Não foi possível adicionar o marcador no mapa!'));
   }
 }
