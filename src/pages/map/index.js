@@ -30,7 +30,16 @@ class Map extends Component {
         longitudeDelta: PropTypes.number,
       }),
       userSearch: PropTypes.string,
-      user: PropTypes.shape(),
+      users: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.number,
+        coordinate: PropTypes.shape({
+          latitude: PropTypes.number,
+          longitude: PropTypes.number,
+        }).isRequired,
+        title: PropTypes.string,
+        bio: PropTypes.string,
+        avatar_url: PropTypes.string,
+      })),
     }).isRequired,
   }
 
@@ -54,10 +63,7 @@ class Map extends Component {
 
   setCoordinates = (event) => {
     const { coordinate } = event.nativeEvent;
-
     this.setState({ coordinate, modalVisible: true });
-
-    // this.props.getGithubUserRequest(username, coordinate);
   }
 
 
@@ -71,7 +77,7 @@ class Map extends Component {
           style={styles.map}
           region={this.state.region}
         />
-        { users && users.map(u => (
+        {users && users.map(u => (
           <MapView.Marker
             key={u.id}
             coordinate={u.coordinate}
