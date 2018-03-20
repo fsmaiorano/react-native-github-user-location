@@ -75,21 +75,20 @@ class Map extends Component {
           provider={PROVIDER_GOOGLE}
           style={styles.map}
           region={this.state.region}
-        />
-        {users && users.map(u => (
-          <MapView.Marker
-            key={u.id}
-            coordinate={u.coordinate}
-            title={u.login}
-            description={u.bio}
-
-          >
-            <TouchableOpacity onPress={() => this.getInformation(u)}>
-              <Image style={styles.marker} source={{ uri: u.avatar_url }} />
-            </TouchableOpacity>
-          </MapView.Marker>
-        ))}
-
+        >
+          {this.props.map.users.map(u => (
+            <MapView.Marker
+              key={u.id}
+              coordinate={u.coordinate}
+              title={u.login}
+              description={u.bio}
+            >
+              <TouchableOpacity onPress={() => this.getInformation(u)}>
+                <Image style={styles.marker} source={{ uri: u.avatar_url }} />
+              </TouchableOpacity>
+            </MapView.Marker>
+          ))}
+        </MapView>
 
         <Modal
           animationType="slide"
