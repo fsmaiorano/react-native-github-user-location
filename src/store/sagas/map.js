@@ -13,7 +13,13 @@ export function* getCoordinatesRequest(action) {
 export function* getGithubUserRequest(action) {
   try {
     const response = yield call(api.get, `/users/${action.payload.searchUser}`);
-    yield put(MapActions.getGithubUserSuccess({ ...response.data, coordinate: action.payload.coordinate }));
+
+    const users = yield select(state => state.map.users);
+    if (users.find(user => user.id === response.data.id)) {
+      yield put(MapActions.getGithubUserError('Não foi possível adicionar o marcador no mapa!'));
+    } else {
+      yield put(MapActions.getGithubUserSuccess({ ...response.data, coordinate: action.payload.coordinate }));
+    }
   } catch (err) {
     yield put(MapActions.getGithubUserError('Não foi possível adicionar o marcador no mapa!'));
   }
