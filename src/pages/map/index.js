@@ -55,6 +55,7 @@ class Map extends Component {
   getUser = () => {
     const { username, coordinate } = this.state;
     this.props.getGithubUserRequest(username, coordinate);
+    this.setState({ modalVisible: false, username: '' });
   }
 
   setCoordinates = (event) => {
@@ -67,7 +68,6 @@ class Map extends Component {
   }
 
   render() {
-    const { users } = this.props.map;
     return (
       <View style={styles.container}>
         <MapView
